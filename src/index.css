@@ -1,0 +1,230 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  --color-brand-50: oklch(0.97 0.02 250);
+  --color-brand-100: oklch(0.93 0.05 250);
+  --color-brand-200: oklch(0.86 0.09 250);
+  --color-brand-300: oklch(0.76 0.14 250);
+  --color-brand-400: oklch(0.64 0.18 250);
+  --color-brand-500: oklch(0.55 0.21 250);
+  --color-brand-600: oklch(0.46 0.22 250);
+  --color-brand-700: oklch(0.38 0.19 250);
+  --color-brand-800: oklch(0.29 0.14 250);
+  --color-brand-900: oklch(0.22 0.09 250);
+
+  --color-surface-950: oklch(0.10 0.02 250);
+  --color-surface-900: oklch(0.13 0.025 250);
+  --color-surface-800: oklch(0.17 0.025 250);
+  --color-surface-700: oklch(0.22 0.022 250);
+  --color-surface-600: oklch(0.30 0.018 250);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: oklch(0.10 0.02 250);
+  color: #e2e8f0;
+  min-height: 100vh;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: oklch(0.13 0.025 250);
+}
+
+::-webkit-scrollbar-thumb {
+  background: oklch(0.30 0.018 250);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.46 0.22 250);
+}
+
+/* Input number arrow removal */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Animated gradient background */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-gradient {
+  background: linear-gradient(135deg, #1e1b4b, #0f172a, #1e3a5f, #0f172a);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+/* Glow effects */
+.glow-brand {
+  box-shadow: 0 0 20px oklch(0.55 0.21 250 / 0.3);
+}
+
+.glow-brand:hover {
+  box-shadow: 0 0 35px oklch(0.55 0.21 250 / 0.5);
+}
+
+/* Card glass effect */
+.glass-card {
+  background: oklch(0.13 0.025 250 / 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid oklch(0.30 0.018 250 / 0.5);
+}
+
+/* Number input range track */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: oklch(0.30 0.018 250);
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: oklch(0.55 0.21 250);
+  cursor: pointer;
+  box-shadow: 0 0 8px oklch(0.55 0.21 250 / 0.6);
+  transition: all 0.2s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 14px oklch(0.55 0.21 250 / 0.8);
+}
+
+/* Pulse animation for result */
+@keyframes pulseIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.result-animate {
+  animation: pulseIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Shimmer on cards */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.shimmer-line {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, oklch(1 0 0 / 0.05), transparent);
+  animation: shimmer 2.5s infinite;
+}
+
+/* ── Neon icon box ── */
+@keyframes neonPulse {
+
+  0%,
+  100% {
+    box-shadow:
+      0 0 6px 1px oklch(0.55 0.21 270 / 0.6),
+      inset 0 0 8px oklch(0.55 0.21 270 / 0.1);
+  }
+
+  50% {
+    box-shadow:
+      0 0 14px 3px oklch(0.55 0.21 270 / 0.9),
+      inset 0 0 14px oklch(0.55 0.21 270 / 0.2);
+  }
+}
+
+.neon-icon-box {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: oklch(0.10 0.03 270);
+  border: 1.5px solid oklch(0.55 0.21 270 / 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: neonPulse 2.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.neon-icon {
+  font-size: 15px;
+  color: oklch(0.75 0.18 270);
+  filter: drop-shadow(0 0 5px oklch(0.65 0.22 270 / 0.9));
+}
+
+/* ── Mini icon box for input fields ── */
+.input-icon-box {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--icon-bg, #6366f118);
+  border: 1.5px solid var(--icon-border, #6366f1aa);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px 1px var(--icon-glow, #6366f166);
+}
+
+.input-icon-glyph {
+  font-size: 12px;
+  color: var(--icon-color, #a5b4fc);
+  filter: drop-shadow(0 0 4px var(--icon-glow, #818cf8aa));
+}
