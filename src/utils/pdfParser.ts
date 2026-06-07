@@ -57,16 +57,6 @@ export function detectDocumentType(text: string): DocType {
 //   - A numerical grade (1.00–5.00 OR descriptive like "Passed"/"INC")
 // This is intentionally loose to handle varied QCU PDF layouts.
 
-const GRADE_MAP: Record<string, number> = {
-  'passed': 3.00,
-  'pass': 3.00,
-  'inc': 5.00,
-  'incomplete': 5.00,
-  'failed': 5.00,
-  'drop': 5.00,
-  'withdrawn': 5.00,
-  'w': 5.00,
-};
 
 export function parseSubjects(text: string): SubjectRow[] {
   const rows: SubjectRow[] = [];
